@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+        /* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: 50px 5%;
+}
+
+.gallery-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 20px;
+    margin-top: 60px;
+}
+
+/* Gallery Grid */
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+/* Gallery Items */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Overlay Effect */
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-img {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close:hover {
+    transform: scale(1.2);
+}
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Luxury Hotel</a></div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="about.html" class="nav-item">About</a></li>
+                <li><a href="rooms.html" class="nav-item">Rooms</a></li>
+                <li><a href="blog.html" class="nav-item">Blog</a></li>
+                <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+            </ul>
+    
+            <a href="booking.html"><button class="book-now">Book Now</button></a>
+    
+            <!-- Hamburger Menu for Mobile -->
+            <div class="menu-toggle">&#9776;</div>
+        </nav>
+        
+    </header>
+
+    <!-- Gallery Section -->
+    <section class="gallery">
+        <h1 class="gallery-title">Our Luxury Hotel Gallery</h1>
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="images/gallery/gallery1.jpg" alt="Luxury Suite">
+                <div class="overlay">
+                    <h3>Luxury Suite</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery2.jpg" alt="Swimming Pool">
+                <div class="overlay">
+                    <h3>Infinity Pool</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery3.jpg" alt="Fine Dining">
+                <div class="overlay">
+                    <h3>Fine Dining</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery4.jpg" alt="Ocean View">
+                <div class="overlay">
+                    <h3>Ocean View Rooms</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery5.jpg" alt="Spa & Wellness">
+                <div class="overlay">
+                    <h3>Spa & Wellness</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery6.jpg" alt="Lobby">
+                <div class="overlay">
+                    <h3>Elegant Lobby</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery7.jpg" alt="Lobby">
+                <div class="overlay">
+                    <h3>Elegant Lobby</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery8.jpg" alt="Lobby">
+                <div class="overlay">
+                    <h3>Elegant Lobby</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery9.jpg" alt="Lobby">
+                <div class="overlay">
+                    <h3>Elegant Lobby</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery10.jpg" alt="Lobby">
+                <div class="overlay">
+                    <h3>Elegant Lobby</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery11.jpg" alt="Lobby">
+                <div class="overlay">
+                    <h3>Elegant Lobby</h3>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gallery/gallery12.jpg" alt="Lobby">
+                <div class="overlay">
+                    <h3>Elegant Lobby</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <span class="close">&times;</span>
+        <img class="lightbox-img" src="" alt="Expanded View">
+    </div>
+
+
+    
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <p>123 Luxury ktm City</p>
+            <p>Phone: +1 123-4567</p>
+            <p>Email: aakkashsubedi@gmail.com</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#rooms">Rooms</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="gallery.html">gallery</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 Aakash Luxury Hotel. All rights reserved.</p>
+    </div>
+</footer>
+
+
+    <script>
+
+document.addEventListener("DOMContentLoaded", () => {
+    const galleryItems = document.querySelectorAll(".gallery-item img");
+    const lightbox = document.querySelector(".lightbox");
+    const lightboxImg = document.querySelector(".lightbox-img");
+    const closeBtn = document.querySelector(".close");
+
+    galleryItems.forEach(item => {
+        item.addEventListener("click", () => {
+            lightboxImg.src = item.src;
+            lightbox.classList.add("active");
+        });
+    });
+
+    closeBtn.addEventListener("click", () => {
+        lightbox.classList.remove("active");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+        if (e.target !== lightboxImg) {
+            lightbox.classList.remove("active");
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
