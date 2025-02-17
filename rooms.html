@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Hotel Rooms</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+    <style>
+
+.header {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('images/bgimg.jpeg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4rem;
+            color: white;
+        }
+
+        .header-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+main {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 3rem 1rem;
+}
+
+.room-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+}
+
+@media (min-width: 768px) {
+    .room-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .room-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Room card styles */
+.room-card {
+    background-color: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.image-container {
+    position: relative;
+    height: 16rem;
+    overflow: hidden;
+}
+
+.room-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.room-card:hover .room-image {
+    transform: scale(1.05);
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.room-card:hover .image-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.see-details-button {
+    padding: 0.5rem 1.5rem;
+    background-color: white;
+    color: rgb(17, 24, 39);
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: all 0.3s ease;
+}
+
+.room-card:hover .see-details-button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.room-info {
+    padding: 1.5rem;
+}
+
+.room-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(17, 24, 39);
+    margin-bottom: 0.5rem;
+}
+
+.room-price {
+    color: rgb(75, 85, 99);
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 50;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 0.5rem;
+    max-width: 64rem;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgb(229, 231, 235);
+}
+
+.modal-header h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(17, 24, 39);
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: rgb(107, 114, 128);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: rgb(55, 65, 81);
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.modal-image {
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.room-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.room-price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgb(17, 24, 39);
+}
+
+.room-description {
+    color: rgb(75, 85, 99);
+    line-height: 1.5;
+}
+
+.book-now-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: rgb(37, 99, 235);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.book-now-button:hover {
+    background-color: rgb(29, 78, 216);
+}
+
+
+    </style>
+</head>
+<body>
+    
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Aakash Stays</a></div>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="about.html" class="nav-item">About</a></li>
+                <li><a href="rooms.html" class="nav-item">Rooms</a></li>
+                <li><a href="blog.html" class="nav-item">Blog</a></li>
+                <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+
+            </ul>
+
+            <a href="booking.html"><button class="nav-book-now">Book Now</button></a>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="menu-toggle">&#9776;</div>
+        </nav>
+
+    </header>
+
+
+    <div class="header">
+        <div class="header-content">
+            <h1>Luxury Rooms</h1>
+            <p>Where timeless elegance meets modern sophistication</p>
+        </div>
+    </div>
+
+        <!-- Room Grid -->
+        <main>
+            <div class="room-grid" id="roomGrid">
+                <!-- Rooms will be dynamically inserted here -->
+            </div>
+        </main>
+
+        <!-- Room Details Modal -->
+        <div class="modal" id="roomModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 id="modalTitle"></h2>
+                    <button class="close-button" onclick="closeModal()">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="image-grid" id="modalImages">
+                        <!-- Images will be dynamically inserted here -->
+                    </div>
+                    <div class="room-info">
+                        <p class="room-price" id="modalPrice"></p>
+                        <p class="room-description" id="modalDescription"></p>
+                        <button class="book-now-button">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p> Aakash Stays, Bharatpur City</p>
+                <p>Phone: +1 234-56789</p>
+                <p>Email: aakkashsubedi@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="gallery.html">gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="gallery.html">gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Aakash Stays Luxury Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+
+    <script>
+        // Room data
+const rooms = [
+    {
+        id: 1,
+        title: "Luxury Ocean Suite",
+        price: "$299/night",
+        mainImage: "https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Experience ultimate luxury in our Ocean Suite featuring panoramic sea views, a private balcony, and premium amenities. Perfect for those seeking a memorable coastal retreat."
+    },
+    {
+        id: 2,
+        title: "Garden View Deluxe",
+        price: "$199/night",
+        mainImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Immerse yourself in tranquility with our Garden View Deluxe room, featuring lush garden views, modern furnishings, and a cozy sitting area perfect for relaxation."
+    },
+    {
+        id: 2,
+        title: "Garden View Deluxe",
+        price: "$199/night",
+        mainImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Immerse yourself in tranquility with our Garden View Deluxe room, featuring lush garden views, modern furnishings, and a cozy sitting area perfect for relaxation."
+    },
+    {
+        id: 2,
+        title: "Garden View Deluxe",
+        price: "$199/night",
+        mainImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Immerse yourself in tranquility with our Garden View Deluxe room, featuring lush garden views, modern furnishings, and a cozy sitting area perfect for relaxation."
+    },
+    {
+        id: 2,
+        title: "Garden View Deluxe",
+        price: "$199/night",
+        mainImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Immerse yourself in tranquility with our Garden View Deluxe room, featuring lush garden views, modern furnishings, and a cozy sitting area perfect for relaxation."
+    },
+    {
+        id: 2,
+        title: "Garden View Deluxe",
+        price: "$199/night",
+        mainImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Immerse yourself in tranquility with our Garden View Deluxe room, featuring lush garden views, modern furnishings, and a cozy sitting area perfect for relaxation."
+    },
+    {
+        id: 2,
+        title: "Garden View Deluxe",
+        price: "$199/night",
+        mainImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Immerse yourself in tranquility with our Garden View Deluxe room, featuring lush garden views, modern furnishings, and a cozy sitting area perfect for relaxation."
+    },
+    {
+        id: 2,
+        title: "Garden View Deluxe",
+        price: "$199/night",
+        mainImage: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Immerse yourself in tranquility with our Garden View Deluxe room, featuring lush garden views, modern furnishings, and a cozy sitting area perfect for relaxation."
+    },
+    {
+        id: 3,
+        title: "Presidential Suite",
+        price: "$499/night",
+        mainImage: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=1200",
+        additionalImages: [
+            "https://images.unsplash.com/photo-1609949397765-e8c1af421382?auto=format&fit=crop&q=80&w=1200",
+            "https://images.unsplash.com/photo-1600585152220-90363fe7e115?auto=format&fit=crop&q=80&w=1200"
+        ],
+        description: "Our finest accommodation featuring expansive living spaces, premium furnishings, and personalized butler service. Experience luxury at its pinnacle."
+    }
+    
+];
+
+// Initialize the room grid
+function initializeRooms() {
+    const roomGrid = document.getElementById('roomGrid');
+    
+    rooms.forEach(room => {
+        const roomCard = document.createElement('div');
+        roomCard.className = 'room-card';
+        roomCard.innerHTML = `
+            <div class="image-container">
+                <img src="${room.mainImage}" alt="${room.title}" class="room-image">
+                <div class="image-overlay">
+                    <button class="see-details-button" onclick="showRoomDetails(${room.id})">
+                        See Details
+                    </button>
+                </div>
+            </div>
+            <div class="room-info">
+                <h3 class="room-title">${room.title}</h3>
+                <p class="room-price">${room.price}</p>
+            </div>
+        `;
+        roomGrid.appendChild(roomCard);
+    });
+}
+
+// Show room details in modal
+function showRoomDetails(roomId) {
+    const room = rooms.find(r => r.id === roomId);
+    if (!room) return;
+
+    const modal = document.getElementById('roomModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImages = document.getElementById('modalImages');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalDescription = document.getElementById('modalDescription');
+
+    modalTitle.textContent = room.title;
+    modalPrice.textContent = room.price;
+    modalDescription.textContent = room.description;
+
+    // Set up images
+    modalImages.innerHTML = `
+        <img src="${room.mainImage}" alt="${room.title}" class="modal-image">
+        ${room.additionalImages.map(img => `
+            <img src="${img}" alt="${room.title}" class="modal-image">
+        `).join('')}
+    `;
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+// Close modal
+function closeModal() {
+    const modal = document.getElementById('roomModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Close modal when clicking outside
+document.getElementById('roomModal').addEventListener('click', (e) => {
+    if (e.target.id === 'roomModal') {
+        closeModal();
+    }
+});
+
+// Initialize the page
+document.addEventListener('DOMContentLoaded', initializeRooms);
+    </script>
+</body>
+</html>

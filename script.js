@@ -64,37 +64,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Rooms
    // Improved JavaScript
-document.addEventListener("DOMContentLoaded", () => {
-    const roomCards = document.querySelectorAll('.room-card');
+   const roomsData = [
+    {
+        title: "Deluxe Room",
+        images: ["images/rooms/room2.jpg", "images/rooms/room2.jpg"],
+        description: "Luxurious room with premium amenities",
+        price: "$199/night",
+        amenities: ["King-size bed", "Ocean view", "Free WiFi", "Mini bar", "40\" TV"],
+        bookingLink: "#"
+    },
+    {
+        title: "Family Suite",
+        images: ["images/rooms/room2.jpg", "images/rooms/room2.jpg"],
+        description: "Spacious suite for family stays",
+        price: "$299/night",
+        amenities: ["Two bedrooms", "Kitchenette", "Balcony", "Child-friendly", "Free breakfast"],
+        bookingLink: "#"
+    },
+    {
+        title: "Executive Suite",
+        images: ["images/rooms/room2.jpg", "images/rooms/room2.jpg"],
+        description: "Premium business-class accommodation",
+        price: "$349/night",
+        amenities: ["Work desk", "Private lounge", "Jacuzzi", "24/7 concierge", "Airport shuttle"],
+        bookingLink: "#"
+    }
+];
 
-    roomCards.forEach(card => {
-        // Load additional images from data attribute
-        const images = card.dataset.images?.split(',') || [];
-        const imageGrid = card.querySelector('.image-grid');
-        
-        images.forEach(imgSrc => {
-            const img = document.createElement('img');
-            img.src = imgSrc;
-            img.alt = 'Room Detail';
-            img.style.width = '100%';
-            img.style.height = '100px';
-            img.style.objectFit = 'cover';
-            img.style.borderRadius = '4px';
-            imageGrid.appendChild(img);
-        });
+function createRoomCard(room) {
+    const card = document.createElement('div');
+    card.className = 'room-card';
+    
+    card.innerHTML = `
+        <img src="${room.images[0]}" alt="${room.title}" class="room-image">
+        <div class="room-content">
+            <h3>${room.title}</h3>
+            <p>${room.description}</p>
+            <button class="show-details">
+                Show Details ▼
+            </button>
+            <div class="additional-details">
+                <div class="price-tag">${room.price}</div>
+                <ul class="amenities-list">
+                    ${room.amenities.map(item => `<li>✓ ${item}</li>`).join('')}
+                </ul>
+                <a href="${room.bookingLink}" class="book-button">Book Now</a>
+            </div>
+        </div>
+    `;
 
-        // Touch device optimization
-        let touchTimer;
-        card.addEventListener('touchstart', () => {
-            touchTimer = setTimeout(() => {
-                card.classList.add('hover-active');
-            }, 500);
-        });
+    const detailsButton = card.querySelector('.show-details');
+    const detailsSection = card.querySelector('.additional-details');
 
-        card.addEventListener('touchend', () => {
-            clearTimeout(touchTimer);
-            card.classList.remove('hover-active');
-        });
+    detailsButton.addEventListener('click', () => {
+        detailsSection.classList.toggle('active');
+        detailsButton.textContent = detailsSection.classList.contains('active') 
+            ? 'Hide Details ▲' 
+            : 'Show Details ▼';
+    });
+
+    return card;
+}
+
+// Initialize rooms
+document.addEventListener('DOMContentLoaded', () => {
+    const roomGrid = document.querySelector('.room-grid');
+    roomsData.forEach(room => {
+        roomGrid.appendChild(createRoomCard(room));
     });
 });
     // rooms

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Luxury Haven Hotel</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('images/bgimg.jpeg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4rem;
+            color: white;
+        }
+
+        .header-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .about-us,
+        .why-choose-us,
+        .meet-our-team {
+            margin-bottom: 6rem;
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            color: #000000;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: #000000;
+            margin: 1rem auto;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            text-align: center;
+        }
+
+        .reasons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .reason {
+            padding: 2.5rem;
+            background: white;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .reason:hover {
+            transform: translateY(-10px);
+        }
+
+        .reason i {
+            font-size: 2.5rem;
+            color: #000000;
+            margin-bottom: 1.5rem;
+        }
+
+        .reason h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .curators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            padding: 2rem 0;
+        }
+
+        .curator-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .curator-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .curator-image {
+            height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .curator-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .curator-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .curator-info {
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            background: white;
+        }
+
+        .curator-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: #000000;
+            margin-bottom: 0.5rem;
+        }
+
+        .curator-role {
+            color: #000000;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .curator-bio {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .curator-socials {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .curator-socials a {
+            color: #000000;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .curator-socials a:hover {
+            color: #1815d6;
+        }
+
+        .decorative-line {
+            position: absolute;
+            height: 2px;
+            width: 100px;
+            background: #000000;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        @media (max-width: 768px) {
+            .curators-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .curator-image {
+                height: 300px;
+            }
+        }
+
+        .stats-section {
+            background: #f8f9fa;
+            padding: 4rem 0;
+            margin: 4rem 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            color: #000000;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo"><a href="index.html">Aakash Stays</a></div>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-item">Home</a></li>
+                <li><a href="about.html" class="nav-item">About</a></li>
+                <li><a href="rooms.html" class="nav-item">Rooms</a></li>
+                <li><a href="blog.html" class="nav-item">Blog</a></li>
+                <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+                <li><a href="contact.html" class="nav-item">Contact</a></li>
+
+            </ul>
+
+            <a href="booking.html"><button class="nav-book-now">Book Now</button></a>
+
+            <!-- Hamburger Menu for Mobile -->
+            <div class="menu-toggle">&#9776;</div>
+        </nav>
+
+    </header>
+
+
+    <div class="header">
+        <div class="header-content">
+            <h1>About US</h1>
+            <p>Where timeless elegance meets modern sophistication</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="about-us">
+            <h2 class="section-title">Our Legacy</h2>
+            <p class="about-content">
+                Established with a vision of unparalleled hospitality, [Hotel Name] has been a beacon of luxury and
+                comfort since its inception. Rooted in a tradition of excellence, we have welcomed guests from around
+                the world, providing them with an unforgettable experience marked by warm service, elegant
+                accommodations, and world-class amenities. Over the years, our commitment to innovation and
+                sustainability has ensured that we not only preserve our rich heritage but also evolve to meet the
+                changing needs of modern travelers. As we continue our journey, we remain dedicated to creating timeless
+                experiences that honor our past while embracing the future.
+            </p>
+        </section>
+
+        <section class="stats-section">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">30+</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Luxury Suites</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Guest Satisfaction</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-choose-us">
+            <h2 class="section-title">Why Aakash Stays</h2>
+            <div class="reasons">
+                <div class="reason">
+                    <i class="fas fa-concierge-bell"></i>
+                    <h3>Personalized Service</h3>
+                    <p>24/7 dedicated concierge and butler service tailored to your needs</p>
+                </div>
+                <div class="reason">
+                    <i class="fas fa-spa"></i>
+                    <h3>Wellness Sanctuary</h3>
+                    <p>Award-winning spa with bespoke wellness programs</p>
+                </div>
+                <div class="reason">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Culinary Excellence</h3>
+                    <p>5-star restaurants helmed by Michelin-starred chefs</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="meet-our-team">
+            <h2 class="section-title">Meet Our Team</h2>
+            <div class="curators-grid">
+                <!-- Curator 1 -->
+                <div class="curator-card">
+                    <div class="curator-image">
+                        <img src="images/about/me1.jpg" alt="Senior Curator">
+                    </div>
+                    <div class="curator-info">
+                        <h3 class="curator-name">Aakash Subedi</h3>
+                        <p class="curator-role">Founder</p>
+                        <p class="curator-bio"> Aakash established Aakash Stays with a passion for hospitality
+                            and a vision to create a world-class destination for travelers. Their dedication to
+                            excellence has shaped the hotel into a symbol of luxury, comfort, and impeccable service.
+                        </p>
+                        <div class="curator-socials">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curator 2 -->
+                <div class="curator-card">
+                    <div class="curator-image">
+                        <img src="images/about/me1.jpg" alt="Culinary Director">
+                    </div>
+                    <div class="curator-info">
+                        <h3 class="curator-name">Aakash Subedi</h3>
+                        <p class="curator-role">Managing Director</p>
+                        <p class="curator-bio">As the Managing Director of Aakash Stays,Aakash
+                            leads with innovation and a commitment to guest satisfaction. Their strategic vision ensures
+                            that the hotel continues to evolve while upholding its rich legacy.</p>
+                        <div class="curator-socials">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Curator 3 -->
+                <div class="curator-card">
+                    <div class="curator-image">
+                        <img src="images/about/me1.jpg" alt="Wellness Director">
+                    </div>
+                    <div class="curator-info">
+                        <h3 class="curator-name">Aakash Subedi</h3>
+                        <p class="curator-role">Co-Founder</p>
+                        <p class="curator-bio">Aakash, the driving force behind Aakash Stays, has played a
+                            key role in shaping its success. With a focus on quality and guest experience, they have
+                            helped create a welcoming and memorable stay for every visitor.</p>
+                        <div class="curator-socials">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p> Aakash Stays, Bharatpur City</p>
+                <p>Phone: +1 234-56789</p>
+                <p>Email: aakkashsubedi@gmail.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="gallery.html">gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="gallery.html">gallery</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Aakash Stays Luxury Hotel. All rights reserved.</p>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
