@@ -1,438 +1,442 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luxury Stays - Premium Hotel Booking</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Stays - Premium Hotel Booking</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <style>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.homepage {
-    text-align: center;
-    color: white;
-    padding: 40px;
-    display: none; /* Hidden by default */
-}
+    .homepage {
+      text-align: center;
+      color: white;
+      padding: 40px;
+      display: none;
+      /* Hidden by default */
+    }
 
-.homepage h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-.container {
-  width: 100%;
-  max-width: 800px;
-  display: none;
-}
+    .homepage h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
 
-.booking-form {
-  background: rgba(255, 255, 255, 0.95);
-  padding: 40px 50px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-  position: relative;
-  overflow: hidden;
-  transition: all 0.3s ease;
+    .container {
+      width: 100%;
+      max-width: 800px;
+      display: none;
+    }
 
-}
+    .booking-form {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px 50px;
+      border-radius: 20px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
 
-.booking-form.hidden {
-  opacity: 0;
-  transform: translateY(-20px);
-  pointer-events: none;
-}
+    }
 
-.form-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
+    .booking-form.hidden {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+    }
 
-.form-header .logo {
-  margin-bottom: 20px;
-}
+    .form-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-.form-header h2 {
-  color: #2c5364;
-  font-size: 28px;
-  margin-bottom: 10px;
-  font-weight: 600;
-}
+    .form-header .logo {
+      margin-bottom: 20px;
+    }
 
-.form-header p {
-  color: #666;
-  font-size: 16px;
-}
+    .form-header h2 {
+      color: #2c5364;
+      font-size: 28px;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
 
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-  margin-bottom: 30px;
-}
+    .form-header p {
+      color: #666;
+      font-size: 16px;
+    }
 
-.form-group {
-  position: relative;
-}
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-bottom: 30px;
+    }
 
-.form-group label {
-  display: block;
-  color: #444;
-  font-size: 14px;
-  margin-bottom: 8px;
-  font-weight: 500;
-}
+    .form-group {
+      position: relative;
+    }
 
-.form-group label i {
-  margin-right: 8px;
-  color: #2c5364;
-}
+    .form-group label {
+      display: block;
+      color: #444;
+      font-size: 14px;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
 
-input[type="date"],
-input[type="number"] {
-  width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  background: #fff;
-}
+    .form-group label i {
+      margin-right: 8px;
+      color: #2c5364;
+    }
 
-input[type="date"]:focus,
-input[type="number"]:focus {
-  border-color: #2c5364;
-  box-shadow: 0 0 8px rgba(44, 83, 100, 0.1);
-}
+    input[type="date"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
 
-.input-icon {
-  position: absolute;
-  right: 15px;
-  top: 38px;
-  color: #666;
-}
+    input[type="date"]:focus,
+    input[type="number"]:focus {
+      border-color: #2c5364;
+      box-shadow: 0 0 8px rgba(44, 83, 100, 0.1);
+    }
 
-.number-input {
-  display: flex;
-  align-items: center;
-}
+    .input-icon {
+      position: absolute;
+      right: 15px;
+      top: 38px;
+      color: #666;
+    }
 
-.number-btn {
-  width: 40px;
-  height: 40px;
-  border: 2px solid #e0e0e0;
-  background: #fff;
-  font-size: 18px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .number-input {
+      display: flex;
+      align-items: center;
+    }
 
-.number-btn:hover {
-  background: #2c5364;
-  color: white;
-  border-color: #2c5364;
-}
+    .number-btn {
+      width: 40px;
+      height: 40px;
+      border: 2px solid #e0e0e0;
+      background: #fff;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-input[type="number"] {
-  width: 60px;
-  text-align: center;
-  border-left: none;
-  border-right: none;
-  border-radius: 0;
-}
+    .number-btn:hover {
+      background: #2c5364;
+      color: white;
+      border-color: #2c5364;
+    }
 
-.room-options {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
-}
+    input[type="number"] {
+      width: 60px;
+      text-align: center;
+      border-left: none;
+      border-right: none;
+      border-radius: 0;
+    }
 
-.room-card {
-  padding: 15px;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .room-options {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
 
-.room-card:hover {
-  border-color: #2c5364;
-  transform: translateY(-5px);
-}
+    .room-card {
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.room-card i {
-  font-size: 24px;
-  color: #2c5364;
-  margin-bottom: 10px;
-}
+    .room-card:hover {
+      border-color: #2c5364;
+      transform: translateY(-5px);
+    }
 
-.room-card h4 {
-  color: #333;
-  margin-bottom: 5px;
-}
+    .room-card i {
+      font-size: 24px;
+      color: #2c5364;
+      margin-bottom: 10px;
+    }
 
-.room-card p {
-  color: #666;
-  font-size: 14px;
-}
+    .room-card h4 {
+      color: #333;
+      margin-bottom: 5px;
+    }
 
-.cta-button {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, #2c5364, #203a43);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 18px;
-  font-weight: 500;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: all 0.3s ease;
-}
+    .room-card p {
+      color: #666;
+      font-size: 14px;
+    }
 
-.cta-button:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
+    .cta-button {
+      width: 100%;
+      padding: 16px;
+      background: linear-gradient(135deg, #2c5364, #203a43);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: all 0.3s ease;
+    }
 
-.form-footer {
-  margin-top: 25px;
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-}
+    .cta-button:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
 
-.form-footer i {
-  margin-right: 5px;
-}
+    .form-footer {
+      margin-top: 25px;
+      text-align: center;
+      color: #666;
+      font-size: 14px;
+    }
 
-/* Selected Room Style */
-.room-card.selected {
-  border-color: #2c5364;
-  background: rgba(44, 83, 100, 0.05);
-}
+    .form-footer i {
+      margin-right: 5px;
+    }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .form-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .room-options {
-    grid-template-columns: 1fr;
-  }
-  
-  .booking-form {
-    padding: 30px;
-  }
-}
-.close-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: none;
-  border: none;
-  font-size: 28px;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-}
+    /* Selected Room Style */
+    .room-card.selected {
+      border-color: #2c5364;
+      background: rgba(44, 83, 100, 0.05);
+    }
 
-.close-btn:hover {
-  color: #2c5364;
-  background: rgba(44, 83, 100, 0.1);
-  transform: rotate(90deg);
-}
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
 
-.book-now-btn {
-    padding: 15px 40px;
-    background: #2c5364;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 20px;
-}
+      .room-options {
+        grid-template-columns: 1fr;
+      }
 
-.book-now-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
+      .booking-form {
+        padding: 30px;
+      }
+    }
 
-.visible {
-    display: block !important;
-    animation: fadeIn 0.5s ease-out;
-}
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
 
-    </style>
+    .close-btn:hover {
+      color: #2c5364;
+      background: rgba(44, 83, 100, 0.1);
+      transform: rotate(90deg);
+    }
+
+    .book-now-btn {
+      padding: 15px 40px;
+      background: #2c5364;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .book-now-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .visible {
+      display: block !important;
+      animation: fadeIn 0.5s ease-out;
+    }
+  </style>
 </head>
-<body>
-    <div class="container">
-        <form id="bookingForm" class="booking-form">
-            <div class="form-header">
-                <img src="https://via.placeholder.com/60" alt="Hotel Logo" class="logo">
-                <h2>Premium Room Reservation</h2>
-                <p>Experience Luxury Redefined</p>
-            </div>
-            
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="checkIn"><i class="fas fa-calendar-alt"></i> Check-in Date</label>
-                    <input type="date" id="checkIn" required>
-                    <span class="input-icon"><i class="fas fa-chevron-down"></i></span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="checkOut"><i class="fas fa-calendar-alt"></i> Check-out Date</label>
-                    <input type="date" id="checkOut" required>
-                    <span class="input-icon"><i class="fas fa-chevron-down"></i></span>
-                </div>
-                
-                <div class="form-group">
-                    <label for="guests"><i class="fas fa-users"></i> Guests</label>
-                    <div class="number-input">
-                        <button type="button" class="number-btn" onclick="adjustGuests(-1)">−</button>
-                        <input type="number" id="guests" value="1" min="1" max="4" required>
-                        <button type="button" class="number-btn" onclick="adjustGuests(1)">+</button>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label><i class="fas fa-bed"></i> Room Type</label>
-                    <div class="room-options">
-                        <div class="room-card" data-type="standard">
-                            <i class="fas fa-hotel"></i>
-                            <h4>Standard</h4>
-                            <p>$199/night</p>
-                        </div>
-                        <div class="room-card" data-type="deluxe">
-                            <i class="fas fa-spa"></i>
-                            <h4>Deluxe</h4>
-                            <p>$299/night</p>
-                        </div>
-                        <div class="room-card" data-type="suite">
-                            <i class="fas fa-crown"></i>
-                            <h4>Suite</h4>
-                            <p>$499/night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <button type="submit" class="cta-button">
-                <span>Complete Reservation</span>
-                <i class="fas fa-arrow-right"></i>
-            </button>
-            
-            <div class="form-footer">
-                <p><i class="fas fa-lock"></i> Secure SSL Encryption</p>
-            </div>
-            <button type="button" class="close-btn">&times;</button>
-        </form>
-    </div>
-    <script>
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Show form initially
-    document.querySelector('.container').classList.add('visible');
-    
-    // Close button functionality
-    document.querySelector('.close-btn').addEventListener('click', () => {
+<body>
+  <div class="container">
+    <form id="bookingForm" class="booking-form">
+      <div class="form-header">
+        <img src="https://via.placeholder.com/60" alt="Hotel Logo" class="logo">
+        <h2>Premium Room Reservation</h2>
+        <p>Experience Luxury Redefined</p>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="checkIn"><i class="fas fa-calendar-alt"></i> Check-in Date</label>
+          <input type="date" id="checkIn" required>
+          <span class="input-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+
+        <div class="form-group">
+          <label for="checkOut"><i class="fas fa-calendar-alt"></i> Check-out Date</label>
+          <input type="date" id="checkOut" required>
+          <span class="input-icon"><i class="fas fa-chevron-down"></i></span>
+        </div>
+
+        <div class="form-group">
+          <label for="guests"><i class="fas fa-users"></i> Guests</label>
+          <div class="number-input">
+            <button type="button" class="number-btn" onclick="adjustGuests(-1)">−</button>
+            <input type="number" id="guests" value="1" min="1" max="4" required>
+            <button type="button" class="number-btn" onclick="adjustGuests(1)">+</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fas fa-bed"></i> Room Type</label>
+          <div class="room-options">
+            <div class="room-card" data-type="standard">
+              <i class="fas fa-hotel"></i>
+              <h4>Standard</h4>
+              <p>$199/night</p>
+            </div>
+            <div class="room-card" data-type="deluxe">
+              <i class="fas fa-spa"></i>
+              <h4>Deluxe</h4>
+              <p>$299/night</p>
+            </div>
+            <div class="room-card" data-type="suite">
+              <i class="fas fa-crown"></i>
+              <h4>Suite</h4>
+              <p>$499/night</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="cta-button">
+        <span>Complete Reservation</span>
+        <i class="fas fa-arrow-right"></i>
+      </button>
+
+      <div class="form-footer">
+        <p><i class="fas fa-lock"></i> Secure SSL Encryption</p>
+      </div>
+      <button type="button" class="close-btn">&times;</button>
+    </form>
+  </div>
+  <script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Show form initially
+      document.querySelector('.container').classList.add('visible');
+
+      // Close button functionality
+      document.querySelector('.close-btn').addEventListener('click', () => {
         document.querySelector('.container').classList.remove('visible');
         document.querySelector('.homepage').classList.add('visible');
-        
-        Swal.fire({
-            title: 'Returning to Homepage',
-            icon: 'info',
-            text: 'You can always click "Book Now" to make a reservation',
-            confirmButtonColor: '#2c5364',
-            timer: 2000,
-            timerProgressBar: true
-        });
-    });
 
-    // Book Now button functionality
-    document.querySelector('.book-now-btn').addEventListener('click', () => {
+        Swal.fire({
+          title: 'Returning to Homepage',
+          icon: 'info',
+          text: 'You can always click "Book Now" to make a reservation',
+          confirmButtonColor: '#2c5364',
+          timer: 2000,
+          timerProgressBar: true
+        });
+      });
+
+      // Book Now button functionality
+      document.querySelector('.book-now-btn').addEventListener('click', () => {
         document.querySelector('.homepage').classList.remove('visible');
         document.querySelector('.container').classList.add('visible');
+      });
     });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("bookingForm");
-  let selectedRoomType = "";
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("bookingForm");
+      let selectedRoomType = "";
 
-  // Room Selection
-  document.querySelectorAll('.room-card').forEach(card => {
-    card.addEventListener('click', () => {
-      document.querySelectorAll('.room-card').forEach(c => c.classList.remove('selected'));
-      card.classList.add('selected');
-      selectedRoomType = card.dataset.type;
-    });
-  });
+      // Room Selection
+      document.querySelectorAll('.room-card').forEach(card => {
+        card.addEventListener('click', () => {
+          document.querySelectorAll('.room-card').forEach(c => c.classList.remove('selected'));
+          card.classList.add('selected');
+          selectedRoomType = card.dataset.type;
+        });
+      });
 
-  // Date Validation
-  const checkInInput = document.getElementById('checkIn');
-  const checkOutInput = document.getElementById('checkOut');
-  
-  const today = new Date().toISOString().split('T')[0];
-  checkInInput.min = today;
-  
-  checkInInput.addEventListener('change', () => {
-    checkOutInput.min = checkInInput.value;
-    if (new Date(checkOutInput.value) < new Date(checkInInput.value)) {
-      checkOutInput.value = checkInInput.value;
-    }
-  });
+      // Date Validation
+      const checkInInput = document.getElementById('checkIn');
+      const checkOutInput = document.getElementById('checkOut');
 
-  // Form Submission
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const formData = {
-      checkIn: checkInInput.value,
-      checkOut: checkOutInput.value,
-      guests: document.getElementById('guests').value,
-      roomType: selectedRoomType
-    };
+      const today = new Date().toISOString().split('T')[0];
+      checkInInput.min = today;
 
-    if (!formData.checkIn || !formData.checkOut || !formData.guests || !formData.roomType) {
-      showError('Please fill in all required fields');
-      return;
-    }
+      checkInInput.addEventListener('change', () => {
+        checkOutInput.min = checkInInput.value;
+        if (new Date(checkOutInput.value) < new Date(checkInInput.value)) {
+          checkOutInput.value = checkInInput.value;
+        }
+      });
 
-    Swal.fire({
-      title: 'Confirm Reservation',
-      html: `
+      // Form Submission
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const formData = {
+          checkIn: checkInInput.value,
+          checkOut: checkOutInput.value,
+          guests: document.getElementById('guests').value,
+          roomType: selectedRoomType
+        };
+
+        if (!formData.checkIn || !formData.checkOut || !formData.guests || !formData.roomType) {
+          showError('Please fill in all required fields');
+          return;
+        }
+
+        Swal.fire({
+          title: 'Confirm Reservation',
+          html: `
         <div class="confirmation-details">
           <p><strong>Check-in:</strong> ${formData.checkIn}</p>
           <p><strong>Check-out:</strong> ${formData.checkOut}</p>
@@ -440,93 +444,94 @@ document.addEventListener("DOMContentLoaded", () => {
           <p><strong>Room Type:</strong> ${formData.roomType.toUpperCase()}</p>
         </div>
       `,
-      showCancelButton: true,
-      confirmButtonColor: '#2c5364',
-      confirmButtonText: 'Confirm Booking',
-      cancelButtonText: 'Review Details',
-      icon: 'question'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        processBooking(formData);
-      }
-    });
-  });
+          showCancelButton: true,
+          confirmButtonColor: '#2c5364',
+          confirmButtonText: 'Confirm Booking',
+          cancelButtonText: 'Review Details',
+          icon: 'question'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            processBooking(formData);
+          }
+        });
+      });
 
-  function processBooking(data) {
-    Swal.fire({
-      title: 'Processing Booking...',
-      html: `
+      function processBooking(data) {
+        Swal.fire({
+          title: 'Processing Booking...',
+          html: `
         <div class="loading-spinner">
           <div class="spinner"></div>
           <p>Securing your reservation</p>
         </div>
       `,
-      showConfirmButton: false,
-      allowOutsideClick: false
-    });
+          showConfirmButton: false,
+          allowOutsideClick: false
+        });
 
-    setTimeout(() => {
-      Swal.fire({
-        title: 'Booking Confirmed!',
-        html: `
+        setTimeout(() => {
+          Swal.fire({
+            title: 'Booking Confirmed!',
+            html: `
           <div class="success-message">
             <i class="fas fa-check-circle"></i>
             <h3>Thank you for your reservation!</h3>
             <p>A confirmation email has been sent to your address</p>
           </div>
         `,
-        icon: 'success',
-        confirmButtonColor: '#2c5364'
-      });
-      form.reset();
-      document.querySelectorAll('.room-card').forEach(c => c.classList.remove('selected'));
-    }, 3000);
-  }
+            icon: 'success',
+            confirmButtonColor: '#2c5364'
+          });
+          form.reset();
+          document.querySelectorAll('.room-card').forEach(c => c.classList.remove('selected'));
+        }, 3000);
+      }
 
-  function showError(message) {
-    Swal.fire({
-      icon: 'error',
-      title: 'Validation Error',
-      text: message,
-      confirmButtonColor: '#2c5364'
-    });
-  }
-});
-
-function adjustGuests(value) {
-  const guestsInput = document.getElementById('guests');
-  let currentValue = parseInt(guestsInput.value) || 1;
-  currentValue = Math.min(Math.max(currentValue + value, 1), 4);
-  guestsInput.value = currentValue;
-}
-
-<!-- In your HTML, keep everything the same -->
-
-document.addEventListener("DOMContentLoaded", () => {
-    // Remove duplicate event listeners
-    const closeBtn = document.querySelector('.close-btn');
-    
-    // Single close button handler
-    closeBtn.addEventListener('click', () => {
+      function showError(message) {
         Swal.fire({
-            title: 'Returning to Homepage',
-            icon: 'info',
-            text: 'You will be redirected to the homepage',
-            confirmButtonColor: '#2c5364',
-            timer: 2000,
-            timerProgressBar: true
-        }).then(() => {
-            // Redirect to index.html after alert closes
-            window.location.href = 'index.html';
+          icon: 'error',
+          title: 'Validation Error',
+          text: message,
+          confirmButtonColor: '#2c5364'
         });
+      }
     });
 
-    // Remove other close button event listeners
-    // Keep the rest of your existing code for form handling
-    // ...
-});
+    function adjustGuests(value) {
+      const guestsInput = document.getElementById('guests');
+      let currentValue = parseInt(guestsInput.value) || 1;
+      currentValue = Math.min(Math.max(currentValue + value, 1), 4);
+      guestsInput.value = currentValue;
+    }
 
-// Remove the duplicate close button handlers at the bottom of the script
-    </script>
+    <!-- In your HTML, keep everything the same -->
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Remove duplicate event listeners
+      const closeBtn = document.querySelector('.close-btn');
+
+      // Single close button handler
+      closeBtn.addEventListener('click', () => {
+        Swal.fire({
+          title: 'Returning to Homepage',
+          icon: 'info',
+          text: 'You will be redirected to the homepage',
+          confirmButtonColor: '#2c5364',
+          timer: 2000,
+          timerProgressBar: true
+        }).then(() => {
+          // Redirect to index.html after alert closes
+          window.location.href = 'index.html';
+        });
+      });
+
+      // Remove other close button event listeners
+      // Keep the rest of your existing code for form handling
+      // ...
+    });
+
+    // Remove the duplicate close button handlers at the bottom of the script
+  </script>
 </body>
+
 </html>

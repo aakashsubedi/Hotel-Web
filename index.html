@@ -63,33 +63,79 @@
         </section>
 
 
-<!-- About -->
+        <!-- About -->
         <section id="about" class="about">
-            <h2>About Our Hotel</h2>
+            <h2 class="section-title">About Our Hotel</h2>
             <div class="about-content">
                 <img src="images/about/about.jpg" alt="Hotel Interior">
                 <div class="about-text">
-                    <p>Welcome to Luxury Hotel, where elegance meets comfort. Our world-class amenities and exceptional service ensure an unforgettable stay for all our guests.</p>
-                    <p>From our exquisite dining options to our state-of-the-art spa facilities, we offer an unparalleled experience that will leave you refreshed and rejuvenated.</p>
+                    <p>Aakash Stays is a premier hotel that offers a perfect blend of comfort, elegance, and top-notch
+                        hospitality. Whether you're traveling for business or leisure, our well-appointed rooms, modern
+                        amenities, and exceptional service ensure a relaxing and memorable stay. Conveniently located,
+                        Aakash Stays provides easy access to major attractions while maintaining a peaceful ambiance for
+                        guests to unwind. With a commitment to quality and guest satisfaction, we strive to make every
+                        stay a delightful experience.</p>
                 </div>
             </div>
         </section>
-<!-- About -->
+        <!-- About -->
 
 
-<!-- Rooms -->
+        <!-- Rooms -->
         <section class="rooms">
-            <h2>Our Rooms</h2>
-            <div class="room-grid">
-                <!-- Rooms will be added here by JavaScript -->
+            <h2 class="section-title">Our Rooms</h2>
+            <!-- Room Grid -->
+            <main class="room-main">
+                <div class="room-grid" id="roomGrid">
+                    <!-- Rooms will be dynamically inserted here -->
+                </div>
+            </main>
+            <!-- Room Details Modal -->
+            <div class="modal" id="roomModal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalTitle"></h2>
+                        <button class="close-button" onclick="closeModal()">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="image-grid" id="modalImages">
+                            <!-- Images will be dynamically inserted here -->
+                        </div>
+                        <div class="room-info">
+                            <p class="room-price" id="modalPrice"></p>
+                            <p class="room-description" id="modalDescription"></p>
+                            <button class="book-now-button">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </section>
-<!-- Rooms -->
+        <!-- Rooms -->
 
 
 
+        <!-- /* Video */ -->
+        <section class="video-hero">
+            <div class="video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="images/video/video2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="video-content">
+                <h1 class="animated-heading">Book your Stays</h1>
+                <p class="animated-text">Experience Luxury Redefined</p>
+                <a href="booking.html" class="ctaa-button">Book Now</a>
+            </div>
+        </section>
+        <!-- /* Video */ -->
+
+
+
+        <!-- /* blog */ -->
         <section id="blog" class="blog">
-            <h2>Latest from Our Blog</h2>
+            <h2 class="section-title">Latest from Our Blog</h2>
             <div class="blog-grid">
                 <div class="blog-card">
                     <img src="images/rooms/room1.jpg" alt="Travel Tips">
@@ -111,6 +157,8 @@
                 </div>
             </div>
         </section>
+        <!-- /* Blog */ -->
+
     </main>
 
     <footer>
@@ -118,34 +166,32 @@
             <div class="footer-section">
                 <h3>Contact Us</h3>
                 <p> Aakash Stays, Bharatpur City</p>
-                <p>Phone: +1 234-56789</p>
+                <p>Phone: +977 9804131198</p>
                 <p>Email: aakkashsubedi@gmail.com</p>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#rooms">Rooms</a></li>
-                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="rooms.html">Rooms</a></li>
+                    <li><a href="blog.html">Blog</a></li>
                     <li><a href="gallery.html">gallery</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>Customer Service</h3>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#rooms">Rooms</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="gallery.html">gallery</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-linkedin"></i></a>
                 </div>

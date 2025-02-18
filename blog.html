@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,371 +11,375 @@
   <style>
     /* Base Styles */
 
-.container {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
 
-/* Hero Section */
-.hero-section {
-  position: relative;
-  height: 70vh;
-  overflow: hidden;
-}
+    /* Hero Section */
+    .hero-section {
+      position: relative;
+      height: 70vh;
+      overflow: hidden;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('images/bgimg.jpeg') center/cover;
 
-.hero-slider {
-  position: relative;
-  height: 100%;
-}
+    }
 
-.slide {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 1s ease;
-  background-size: cover;
-  background-position: center;
-}
+    .hero-slider {
+      position: relative;
+      height: 100%;
+    }
 
-.slide.active {
-  opacity: 1;
-}
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+      background-size: cover;
+      background-position: center;
+    }
 
-.slide::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.7));
-}
+    .slide.active {
+      opacity: 1;
+    }
 
-.slide-content {
-  position: relative;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 1rem;
-  color: white;
-}
+    .slide::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+    }
 
-.slide-content h1 {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s forwards;
-}
+    .slide-content {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 1rem;
+      color: white;
+    }
 
-.slide-content p {
-  font-size: clamp(1.125rem, 2vw, 1.5rem);
-  max-width: 48rem;
-  margin-bottom: 2rem;
-  font-weight: 300;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s 0.2s forwards;
-}
+    .slide-content h1 {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
 
-.cta-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 2rem;
-  background-color: white;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 9999px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s 0.4s forwards;
-}
+    .slide-content p {
+      font-size: clamp(1.125rem, 2vw, 1.5rem);
+      max-width: 48rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 0.2s forwards;
+    }
 
-.cta-button:hover {
-  background-color: #f3f4f6;
-}
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 2rem;
+      background-color: rgb(29, 78, 216);
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s 0.4s forwards;
+    }
 
-.cta-button svg {
-  transition: transform 0.3s ease;
-}
+    .cta-button:hover {
+      background-color: rgb(37, 99, 235);
+    }
 
-.cta-button:hover svg {
-  transform: translateX(4px);
-}
+    .cta-button svg {
+      transition: transform 0.3s ease;
+    }
 
-.slider-button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 9999px;
-  width: 48px;
-  height: 48px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
+    .cta-button:hover svg {
+      transform: translateX(4px);
+    }
 
-.slider-button:hover {
-  background-color: white;
-  transform: translateY(-50%) scale(1.05);
-}
+    .slider-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 9999px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
 
-.slider-button.prev {
-  left: 1rem;
-}
+    .slider-button:hover {
+      background-color: white;
+      transform: translateY(-50%) scale(1.05);
+    }
 
-.slider-button.next {
-  right: 1rem;
-}
+    .slider-button.prev {
+      left: 1rem;
+    }
 
-/* Section Headers */
-.section-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  padding-top: 4rem;
-}
+    .slider-button.next {
+      right: 1rem;
+    }
 
-h2 {
-  font-size: 1.875rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 3rem;
-}
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 3rem;
+      padding-top: 4rem;
+    }
 
-.view-all {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: #2563eb;
-  background: none;
-  border: none;
-  font-weight: 500;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
+    h2 {
+      font-size: 1.875rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 3rem;
+    }
 
-.view-all:hover {
-  color: #1d4ed8;
-}
+    .view-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #2563eb;
+      background: none;
+      border: none;
+      font-weight: 500;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
 
-.view-all svg {
-  transition: transform 0.3s ease;
-}
+    .view-all:hover {
+      color: #1d4ed8;
+    }
 
-.view-all:hover svg {
-  transform: translateX(4px);
-}
+    .view-all svg {
+      transition: transform 0.3s ease;
+    }
 
-/* Featured Posts */
-.featured-posts {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
+    .view-all:hover svg {
+      transform: translateX(4px);
+    }
 
-@media (min-width: 768px) {
-  .featured-posts {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    /* Featured Posts */
+    .featured-posts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
 
-.featured-post {
-  background-color: white;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s forwards;
-}
+    @media (min-width: 768px) {
+      .featured-posts {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-.featured-post:hover {
-  transform: translateY(-8px);
-}
+    .featured-post {
+      background-color: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
 
-.post-image {
-  position: relative;
-  height: 16rem;
-  overflow: hidden;
-}
+    .featured-post:hover {
+      transform: translateY(-8px);
+    }
 
-.post-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.7s ease;
-}
+    .post-image {
+      position: relative;
+      height: 16rem;
+      overflow: hidden;
+    }
 
-.featured-post:hover .post-image img {
-  transform: scale(1.05);
-}
+    .post-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
 
-.post-badges {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  display: flex;
-  gap: 0.5rem;
-}
+    .featured-post:hover .post-image img {
+      transform: scale(1.05);
+    }
 
-.category {
-  background-color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
+    .post-badges {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      display: flex;
+      gap: 0.5rem;
+    }
 
-.featured {
-  background-color: #fbbf24;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
+    .category {
+      background-color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
 
-.post-content {
-  padding: 2rem;
-}
+    .featured {
+      background-color: #fbbf24;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
 
-.post-content h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 0.75rem;
-  transition: color 0.3s ease;
-}
+    .post-content {
+      padding: 2rem;
+    }
 
-.featured-post:hover h3 {
-  color: #2563eb;
-}
+    .post-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      transition: color 0.3s ease;
+    }
 
-.post-content p {
-  color: #4b5563;
-  margin-bottom: 1.5rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+    .featured-post:hover h3 {
+      color: #2563eb;
+    }
 
-.post-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.875rem;
-}
+    .post-content p {
+      color: #4b5563;
+      margin-bottom: 1.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
 
-.meta-left {
-  display: flex;
-  gap: 1rem;
-  color: #6b7280;
-}
+    .post-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.875rem;
+    }
 
-.meta-left span {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
+    .meta-left {
+      display: flex;
+      gap: 1rem;
+      color: #6b7280;
+    }
 
-.meta-right {
-  color: #2563eb;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
+    .meta-left span {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
 
-/* Regular Posts */
-.regular-posts {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-bottom: 4rem;
-}
+    .meta-right {
+      color: #2563eb;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
 
-@media (min-width: 768px) {
-  .regular-posts {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
+    /* Regular Posts */
+    .regular-posts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
 
-@media (min-width: 1024px) {
-  .regular-posts {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
+    @media (min-width: 768px) {
+      .regular-posts {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-.post {
-  background-color: white;
-  border-radius: 0.75rem;
-  overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s forwards;
-}
+    @media (min-width: 1024px) {
+      .regular-posts {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
 
-.post:hover {
-  transform: translateY(-8px);
-}
+    .post {
+      background-color: white;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards;
+    }
 
-.post .post-image {
-  height: 12rem;
-}
+    .post:hover {
+      transform: translateY(-8px);
+    }
 
-.post .post-content {
-  padding: 1.5rem;
-}
+    .post .post-image {
+      height: 12rem;
+    }
 
-.post h3 {
-  font-size: 1.25rem;
-}
+    .post .post-content {
+      padding: 1.5rem;
+    }
 
-/* Animations */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .post h3 {
+      font-size: 1.25rem;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
+
 <body>
-    <header>
-        <nav>
-            <div class="logo"><a href="index.html">Aakash Stays</a></div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="nav-item">Home</a></li>
-                <li><a href="about.html" class="nav-item">About</a></li>
-                <li><a href="rooms.html" class="nav-item">Rooms</a></li>
-                <li><a href="blog.html" class="nav-item">Blog</a></li>
-                <li><a href="gallery.html" class="nav-item">Gallery</a></li>
-                <li><a href="contact.html" class="nav-item">Contact</a></li>
-            </ul>
-            <a href="booking.html"><button class="nav-book-now">Book Now</button></a>
-            <!-- Hamburger Menu for Mobile -->
-            <div class="menu-toggle">&#9776;</div>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <div class="logo"><a href="index.html">Aakash Stays</a></div>
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-item">Home</a></li>
+        <li><a href="about.html" class="nav-item">About</a></li>
+        <li><a href="rooms.html" class="nav-item">Rooms</a></li>
+        <li><a href="blog.html" class="nav-item">Blog</a></li>
+        <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+        <li><a href="contact.html" class="nav-item">Contact</a></li>
+      </ul>
+      <a href="booking.html"><button class="nav-book-now">Book Now</button></a>
+      <!-- Hamburger Menu for Mobile -->
+      <div class="menu-toggle">&#9776;</div>
+    </nav>
+  </header>
 
   <div class="min-h-screen">
     <!-- Hero Section -->
@@ -383,21 +388,17 @@ h2 {
         <div class="slide active">
           <div class="slide-content">
             <h1>Our Stories</h1>
-            <p>Discover the latest news, insights, and stories from our luxury hotel</p>
+            <p>Discover the latest news, insights, and stories from our Aakash Stays luxury hotel</p>
             <button class="cta-button">
               Explore All Stories
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
             </button>
           </div>
         </div>
       </div>
-      
-      <button class="slider-button prev">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-      </button>
-      <button class="slider-button next">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-      </button>
     </div>
 
     <!-- Featured Posts -->
@@ -406,39 +407,62 @@ h2 {
         <h2>Featured Stories</h2>
         <button class="view-all">
           View All
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
-      
+
       <div class="featured-posts">
         <div class="featured-post">
           <div class="post-image">
-            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&auto=format&fit=crop" alt="Luxury Hospitality">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&auto=format&fit=crop"
+              alt="Luxury Hospitality">
             <div class="post-badges">
               <span class="category">Hospitality</span>
               <span class="featured">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
                 Featured
               </span>
             </div>
           </div>
           <div class="post-content">
             <h3>The Art of Luxury Hospitality: Behind the Scenes</h3>
-            <p>Discover the meticulous attention to detail that goes into creating unforgettable guest experiences in our award-winning hotel. From personalized welcome notes to carefully curated room amenities...</p>
+            <p>Discover the meticulous attention to detail that goes into creating unforgettable guest experiences in
+              our award-winning hotel. From personalized welcome notes to carefully curated room amenities...</p>
             <div class="post-meta">
               <div class="meta-left">
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                  </svg>
                   March 15, 2024
                 </span>
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
                   5 min read
                 </span>
               </div>
               <div class="meta-right">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Sarah Johnson
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                Sarah
               </div>
             </div>
           </div>
@@ -446,32 +470,52 @@ h2 {
 
         <div class="featured-post">
           <div class="post-image">
-            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&auto=format&fit=crop" alt="Weekend Getaway">
+            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&auto=format&fit=crop"
+              alt="Weekend Getaway">
             <div class="post-badges">
               <span class="category">Travel</span>
               <span class="featured">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                </svg>
                 Featured
               </span>
             </div>
           </div>
           <div class="post-content">
             <h3>The Perfect Weekend Getaway: Your Ultimate Guide</h3>
-            <p>Plan the perfect weekend escape with our comprehensive guide to making the most of your stay. From spa treatments to local attractions...</p>
+            <p>Plan the perfect weekend escape with our comprehensive guide to making the most of your stay. From spa
+              treatments to local attractions...</p>
             <div class="post-meta">
               <div class="meta-left">
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                  </svg>
                   March 8, 2024
                 </span>
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
                   7 min read
                 </span>
               </div>
               <div class="meta-right">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                David Thompson
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                John
               </div>
             </div>
           </div>
@@ -485,26 +529,42 @@ h2 {
       <div class="regular-posts">
         <article class="post">
           <div class="post-image">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop" alt="Culinary Journey">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop"
+              alt="Culinary Journey">
             <span class="category">Culinary</span>
           </div>
           <div class="post-content">
             <h3>Culinary Journey: Signature Dishes from Our Kitchen</h3>
-            <p>Take a journey through our award-winning restaurant's most celebrated dishes and the stories behind their creation. Our executive chef shares his inspiration...</p>
+            <p>Take a journey through our award-winning restaurant's most celebrated dishes and the stories behind their
+              creation. Our executive chef shares his inspiration...</p>
             <div class="post-meta">
               <div class="meta-left">
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                  </svg>
                   March 12, 2024
                 </span>
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
                   4 min read
                 </span>
               </div>
               <div class="meta-right">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Chef Michael Chen
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                John Doe
               </div>
             </div>
           </div>
@@ -512,26 +572,42 @@ h2 {
 
         <article class="post">
           <div class="post-image">
-            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&auto=format&fit=crop" alt="Sustainable Luxury">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&auto=format&fit=crop"
+              alt="Sustainable Luxury">
             <span class="category">Sustainability</span>
           </div>
           <div class="post-content">
             <h3>Sustainable Luxury: Our Green Initiative</h3>
-            <p>Learn about our commitment to environmental sustainability without compromising luxury. Discover how we're making a difference while maintaining the highest standards...</p>
+            <p>Learn about our commitment to environmental sustainability without compromising luxury. Discover how
+              we're making a difference while maintaining the highest standards...</p>
             <div class="post-meta">
               <div class="meta-left">
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                  </svg>
                   March 10, 2024
                 </span>
                 <span>
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <polyline points="12 6 12 12 16 14" />
+                  </svg>
                   6 min read
                 </span>
               </div>
               <div class="meta-right">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                Emma Roberts
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+                Sarah
               </div>
             </div>
           </div>
@@ -540,130 +616,111 @@ h2 {
     </div>
   </div>
 
-  
+
 
   <footer>
     <div class="footer-content">
-        <div class="footer-section">
-            <h3>Contact Us</h3>
-            <p> Aakash Stays, Bharatpur City</p>
-            <p>Phone: +1 234-56789</p>
-            <p>Email: aakkashsubedi@gmail.com</p>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p> Aakash Stays, Bharatpur City</p>
+        <p>Phone: +977 9804131198</p>
+        <p>Email: aakkashsubedi@gmail.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="rooms.html">Rooms</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="gallery.html">gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Customer Service</h3>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
         </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#rooms">Rooms</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="gallery.html">gallery</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#rooms">Rooms</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="gallery.html">gallery</a></li>
-            </ul>
-        </div>
-        <div class="footer-section">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-            </div>
-        </div>
+      </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2025 Aakash Stays Luxury Hotel. All rights reserved.</p>
+      <p>&copy; 2025 Aakash Stays Luxury Hotel. All rights reserved.</p>
     </div>
-</footer>
+  </footer>
 
 
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-  // Hero Slider
-  const slides = [
-    {
-      image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&auto=format&fit=crop',
-      title: 'The Art of Luxury Hospitality',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop',
-      title: 'Culinary Excellence',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&auto=format&fit=crop',
-      title: 'Sustainable Luxury',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&auto=format&fit=crop',
-      title: 'Perfect Getaway',
-    }
-  ];
+      // Hero Slider
 
-  let currentSlide = 0;
-  const slider = document.querySelector('.hero-slider');
+      let currentSlide = 0;
+      const slider = document.querySelector('.hero-slider');
 
-  // Create slides
-  slides.forEach((slide, index) => {
-    const slideElement = document.createElement('div');
-    slideElement.className = `slide ${index === 0 ? 'active' : ''}`;
-    slideElement.style.backgroundImage = `url(${slide.image})`;
-    slider.appendChild(slideElement);
-  });
+      // Create slides
+      slides.forEach((slide, index) => {
+        const slideElement = document.createElement('div');
+        slideElement.className = `slide ${index === 0 ? 'active' : ''}`;
+        slideElement.style.backgroundImage = `url(${slide.image})`;
+        slider.appendChild(slideElement);
+      });
 
-  // Navigation
-  const prevButton = document.querySelector('.slider-button.prev');
-  const nextButton = document.querySelector('.slider-button.next');
-  const allSlides = document.querySelectorAll('.slide');
+      // Navigation
+      const prevButton = document.querySelector('.slider-button.prev');
+      const nextButton = document.querySelector('.slider-button.next');
+      const allSlides = document.querySelectorAll('.slide');
 
-  function updateSlide(direction) {
-    allSlides[currentSlide].classList.remove('active');
-    
-    if (direction === 'next') {
-      currentSlide = (currentSlide + 1) % slides.length;
-    } else {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    }
-    
-    allSlides[currentSlide].classList.add('active');
-  }
+      function updateSlide(direction) {
+        allSlides[currentSlide].classList.remove('active');
 
-  prevButton.addEventListener('click', () => updateSlide('prev'));
-  nextButton.addEventListener('click', () => updateSlide('next'));
+        if (direction === 'next') {
+          currentSlide = (currentSlide + 1) % slides.length;
+        } else {
+          currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        }
 
-  // Auto-slide
-  setInterval(() => updateSlide('next'), 5000);
-
-  // Intersection Observer for fade-in animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '50px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
+        allSlides[currentSlide].classList.add('active');
       }
-    });
-  }, observerOptions);
 
-  // Observe all posts for fade-in animation
-  document.querySelectorAll('.featured-post, .post').forEach(post => {
-    observer.observe(post);
-  });
-});
+      prevButton.addEventListener('click', () => updateSlide('prev'));
+      nextButton.addEventListener('click', () => updateSlide('next'));
+
+      // Auto-slide
+      setInterval(() => updateSlide('next'), 5000);
+
+      // Intersection Observer for fade-in animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all posts for fade-in animation
+      document.querySelectorAll('.featured-post, .post').forEach(post => {
+        observer.observe(post);
+      });
+    });
   </script>
 </body>
+
 </html>
